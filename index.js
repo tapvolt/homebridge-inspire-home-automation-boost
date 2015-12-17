@@ -5,7 +5,11 @@ module.exports = function(homebridge) {
 	Service = homebridge.hap.Service;
 	Characteristic = homebridge.hap.Characteristic;
 
-	homebridge.registerAccessory("homebridge-thermostat", "Thermostat", ThermostatAccessory);
+	homebridge.registerAccessory(
+		"homebridge-inspire-home-automation", 
+		"Thermostat", 
+		ThermostatAccessory
+	);
 }
 
 function ThermostatAccessory(log, config) {	
@@ -16,26 +20,25 @@ function ThermostatAccessory(log, config) {
 	this.service = new Service.Thermostat(this.name);
 	this.service
 		.getCharacteristic(Characteristic.On)
-		// .on("get", this.getOn.bind(this))
 		.on("set", this.setOn.bind(this));
 }
 
-ThermostatAccessory.prototype.getOn = function(callback) {
-	request.post({
-		url: "https://www.inspirehomeautomation.co.uk/client/api1_3_1/api.php",
-		formData: {
-			action:
-			apikiey:
-			key:
-			device_id:
-			message:
-			value: 
-		}
-	}, function(error, response, body) {
-		var status = "";
-		callback(null, status);
-	}.bind(this));
-}
+// ThermostatAccessory.prototype.getOn = function(callback) {
+// 	request.post({
+// 		url: "https://www.inspirehomeautomation.co.uk/client/api1_3_1/api.php",
+// 		formData: {
+// 			action:
+// 			apikiey:
+// 			key:
+// 			device_id:
+// 			message:
+// 			value: 
+// 		}
+// 	}, function(error, response, body) {
+// 		var status = "";
+// 		callback(null, status);
+// 	}.bind(this));
+// }
 
 ThermostatAccessory.prototype.setOn = function(on, callback) {
 	var input = on ? 1 : 0;
@@ -47,9 +50,8 @@ ThermostatAccessory.prototype.setOn = function(on, callback) {
 			message: "set_function",
 			value: input
 		}
-	}, function(error, response, body) {
-		var status = "";
-		callback(null, status);
+	}, function(error, response, body) {		
+		callback(null, on);
 	}.bind(this));
 }
 
