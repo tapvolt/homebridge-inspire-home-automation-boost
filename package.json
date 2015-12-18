@@ -1,7 +1,7 @@
 {
   "name": "homebridge-inspire-home-automation-boost",
   "version": "1.0.0",
-  "description": "",
+  "description": "Homebridge plugin for Inspire Home Automation Room Thermostat",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +18,13 @@
   "dependencies": {
     "request": "^2.67.0",
     "xml2js": "^0.4.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tapvolt/homebridge-inspire-home-automation-boost.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tapvolt/homebridge-inspire-home-automation-boost/issues"
+  },
+  "homepage": "https://github.com/tapvolt/homebridge-inspire-home-automation-boost#readme"
 }

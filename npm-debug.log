@@ -1,0 +1,72 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.14.2
+3 info using node@v4.0.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/gjackson/Projects/tapvolt/homebridge-inspire-home-automation-boost',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package.tgz',
+9 verbose tar pack   '/Users/gjackson/Projects/tapvolt/homebridge-inspire-home-automation-boost' ]
+10 verbose tarball /Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package.tgz
+11 verbose folder /Users/gjackson/Projects/tapvolt/homebridge-inspire-home-automation-boost
+12 info prepublish homebridge-inspire-home-automation-boost@1.0.0
+13 verbose addLocalTarball adding from inside cache /Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package.tgz
+14 silly cache afterAdd homebridge-inspire-home-automation-boost@1.0.0
+15 verbose afterAdd /Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package/package.json written
+17 silly publish { name: 'homebridge-inspire-home-automation-boost',
+17 silly publish   version: '1.0.0',
+17 silly publish   description: 'Homebridge plugin for Inspire Home Automation Room Thermostat',
+17 silly publish   main: 'index.js',
+17 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+17 silly publish   keywords: [ 'homebridge-plugin' ],
+17 silly publish   engines: { node: '>=0.12.0', homebridge: '>=0.2.0' },
+17 silly publish   author: { name: 'Gareth Jackson' },
+17 silly publish   license: 'ISC',
+17 silly publish   dependencies: { request: '^2.67.0', xml2js: '^0.4.15' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/tapvolt/homebridge-inspire-home-automation-boost.git' },
+17 silly publish   bugs: { url: 'https://github.com/tapvolt/homebridge-inspire-home-automation-boost/issues' },
+17 silly publish   homepage: 'https://github.com/tapvolt/homebridge-inspire-home-automation-boost#readme',
+17 silly publish   readme: '# homebridge-inspire-home-automation-boost\nHomebridge plugin for Inspire Home Automation Room Thermostat\n\n# Installation\nFollow the instruction in [homebridge](https://www.npmjs.com/package/homebridge) for the\nhomebridge server installation.\nThe plugin is published through [NPM](https://www.npmjs.com/package/homebridge-ifttt) and\nshould be installed "globally" by typing:\n\n    npm install -g homebridge-inspire-home-automation-boost\n\n# Configuration\nRemember to configure the plugin in config.json in your home directory inside the\n.homebridge directory.\n\nLook for a sample config in \n[config.json example](https://github.com/tapvolt/homebridge-inspire-home-automation-boost/blob/master/config.json)\n\nYou will need to read the Inspire Home Automation [API documentation](https://www.inspirehomeautomation.co.uk/client/api.php) to retrieve the missing values (**DEVICE_ID**, **API_KEY**, **KEY**).\n\nThe **name** value in the config file is what Siri will use:\n  \n *"Hey Siri, turn on the Boost"  Ok, the Boost is turned on.*\n  \n  *"Hey Siri, turn off the Boost"  Ok, the Boost is turned off.*\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: 'e61063b76d52317c0b7e599a25ddc1fbee130c7f',
+17 silly publish   _id: 'homebridge-inspire-home-automation-boost@1.0.0',
+17 silly publish   _shasum: '622dba4d057a718914379728935aba44b4d9d1fa',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name homebridge-inspire-home-automation-boost
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/homebridge-inspire-home-automation-boost
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/gjackson/.npm/homebridge-inspire-home-automation-boost/1.0.0/package.tgz
+25 verbose stack Error: auth required for publishing
+25 verbose stack     at CachingRegistryClient.publish (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+25 verbose stack     at /usr/local/lib/node_modules/npm/lib/publish.js:134:14
+25 verbose stack     at mapToRegistry (/usr/local/lib/node_modules/npm/lib/utils/map-to-registry.js:55:3)
+25 verbose stack     at publish_ (/usr/local/lib/node_modules/npm/lib/publish.js:104:3)
+25 verbose stack     at Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+25 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+25 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
+25 verbose stack     at chain (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+25 verbose stack     at /usr/local/lib/node_modules/npm/lib/publish.js:73:5
+25 verbose stack     at RES (/usr/local/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+26 verbose cwd /Users/gjackson/Projects/tapvolt/homebridge-inspire-home-automation-boost
+27 error Darwin 14.5.0
+28 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+29 error node v4.0.0
+30 error npm  v2.14.2
+31 error code ENEEDAUTH
+32 error need auth auth required for publishing
+32 error need auth You need to authorize this machine using `npm adduser`
+33 verbose exit [ 1, true ]
