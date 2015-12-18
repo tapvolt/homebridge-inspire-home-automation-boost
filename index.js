@@ -43,7 +43,7 @@ function BoostAccessory(log, config) {
      */
     this.setFunctionHelper = function(on) {
         this.log('Call for Boost', on);
-        var state = 6;
+        var state = on == 1 ? 6 : 4;
         this.log('Inspire Home Automation set_function value', state);
         return state;
     }
