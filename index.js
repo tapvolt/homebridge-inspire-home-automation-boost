@@ -1,5 +1,5 @@
 var request = require('request');
-var xml2js = require('xml2js');
+var parseString = require('xml2js').parseString;
 var Service, Characteristic;
 
 module.exports = function(homebridge) {
@@ -30,22 +30,32 @@ function ThermostatAccessory(log, config) {
 	
 	this.service = new Service.Thermostat(this.name);		
 	this.service.getCharacteristic(Characteristic.CurrentHeatingCoolingState)
-		.on("get", this.getCurrentHeatingCoolingState.bind(this));
-
+		.on('get', this.getCurrentHeatingCoolingState.bind(this));
 	this.service.getCharacteristic(Characteristic.TargetHeatingCoolingState)
-		.on("get", this.getTargetHeatingCoolingState.bind(this))
-		.on("set", this.setTargetHeatingCoolingState.bind(this));	
-
+		.on('get', this.getTargetHeatingCoolingState.bind(this))
+		.on('set', this.setTargetHeatingCoolingState.bind(this));
 	this.service.getCharacteristic(Characteristic.CurrentTemperature)
-		.on("get", this.getCurrentTemperature.bind(this));	
-
+		.on('get', this.getCurrentTemperature.bind(this));
 	this.service.getCharacteristic(Characteristic.TargetTemperature)
-		.on("get", this.getTargetTemperature.bind(this))
-		.on("set", this.setTargetTemperature.bind(this));
-
+		.on('get', this.getTargetTemperature.bind(this))
+		.on('set', this.setTargetTemperature.bind(this));
 	this.service.getCharacteristic(Characteristic.TemperatureDisplayUnits)
-		.on("get", this.getTemperatureDisplayUnits.bind(this));	
- 
+		.on('get', this.getTemperatureDisplayUnits.bind(this));
+
+    /*
+     We are only switching between On and Off
+     1 = Off
+     2 = Program 1
+     3 = Program 2
+     4 = Both
+     5 = On
+     6 = Boost
+     */
+    this.setFunctionHelper = function(on) {
+        var state = on == 1 ? 5 : 1;
+        this.log('Inspire Home Automation set_function value', state);
+        return state;
+    }
 }
 
 ThermostatAccessory.prototype.getCurrentHeatingCoolingState = function(callback) {
@@ -92,10 +102,10 @@ ThermostatAccessory.prototype.getCurrentTemperature = function(callback) {
     };
     request(options, function(error, response, body) {
             var json;
-            var parseString = require('xml2js').parseString;
             parseString(body,toString(), function (err, result) {
-                    json = JSON.stringify(result);
-                    json = JSON.parse(json);
+                json = JSON.parse(
+                    JSON.stringify(result)
+                );
             });
             this.log(json.xml.Device_Information[0].Current_Temperature[0]);
             callback(null, parseFloat(json.xml.Device_Information[0].Current_Temperature[0]));
@@ -128,28 +138,11 @@ ThermostatAccessory.prototype.setTargetTemperature = function(temp, callback) {
 }
 
 ThermostatAccessory.prototype.getTemperatureDisplayUnits = function(callback) {	
-	this.log('getTemperatureDisplayUnits');
-	var units = Characteristic.TemperatureDisplayUnits.CELSIUS;
-	var unitsName = units == Characteristic.TemperatureDisplayUnits.FAHRENHEIT ? "Fahrenheit" : "Celsius";
-	this.log("Tempature unit for " + this.name + " is: " + unitsName);
-	if (callback) {
-		callback(null, units);
-	}
-}
-
-/*
-We are only switching between On and Off
- 1 = Off
- 2 = Program 1
- 3 = Program 2
- 4 = Both
- 5 = On
- 6 = Boost
- */
-ThermostatAccessory.prototype.setFunctionHelper = function(on) {
-	var state = on == 1 ? 5 : 1;
-	this.log('Inspire Home Automation set_function value', state);
-	return state;
+    this.log('getTemperatureDisplayUnits');
+    var units = Characteristic.TemperatureDisplayUnits.CELSIUS;
+    var unitsName = units == Characteristic.TemperatureDisplayUnits.FAHRENHEIT ? 'Fahrenheit' : 'Celsius';
+    this.log('Temperature unit for ' + this.name + ' is: ' + unitsName);
+    callback(null, units);
 }
 
 ThermostatAccessory.prototype.getServices = function() {
