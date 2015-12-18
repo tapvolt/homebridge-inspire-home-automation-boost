@@ -16,10 +16,10 @@ Remember to configure the plugin in config.json in your home directory inside th
 Look for a sample config in 
 [config.json example](https://github.com/tapvolt/homebridge-inspire-home-automation-boost/blob/master/config.json)
 
-You will need to read the Inspire Home Automation [API documentation](https://www.inspirehomeautomation.co.uk/client/api.php) to retrieve the missing values (DEVICE_ID, API_KEY, KEY).
+You will need to read the Inspire Home Automation [API documentation](https://www.inspirehomeautomation.co.uk/client/api.php) to retrieve the missing values (**DEVICE_ID**, **API_KEY**, **KEY**).
 
-The name value in the config file is what Siri will use:
+The **name** value in the config file is what Siri will use:
   
-  "Hey Siri, turn on the Boost" - Ok, the Boost is turned on.
+ *"Hey Siri, turn on the Boost"  Ok, the Boost is turned on.*
   
-  "Hey Siri, turn off the Boost" - Ok, the Boost is turned off.
+  *"Hey Siri, turn off the Boost"  Ok, the Boost is turned off.*
